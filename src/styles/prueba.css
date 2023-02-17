@@ -1,0 +1,6 @@
+h3{
+    box-sizing: content-box;
+    flex-direction: row;
+    display:inline;
+    background-color: rgba(245, 245, 7, 0.292);
+}
