@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate} from "react-router-dom"
 import { useEffect, useState } from "react";
 import { Detalles, DatosDetail, ImagenDetalle, Btn } from "../../styles/styled-components";
 
@@ -7,13 +7,17 @@ export default function Detail(props){
     const [character, setCharacter] = useState({});
     const {detailId} = useParams();
     const navigate = useNavigate();
+    
 
     function backToHome(){
+
         navigate("/home");
     }
+    
+      
 
     useEffect(() => {
-        fetch(`https://rickandmortyapi.com/api/character/${detailId}`)
+        fetch(`http://localhost:3001/rickandmorty/detail/${detailId}`)
           .then((response) => response.json())
           .then((char) => {
             if (char.name) {

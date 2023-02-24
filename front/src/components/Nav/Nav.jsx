@@ -16,7 +16,7 @@ export default function Nav(props){
 
                 <Link to="/home" style={{textDecoration: "none"}}>
                     <Linked onClick={() => {
-                        props.onSearch(Math.floor(Math.random()*826))}}
+                        props.onSearch(Math.floor(Math.random()*826+1))}}
                     >Random</Linked>
                 </Link>
 

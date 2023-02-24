@@ -36,22 +36,25 @@ function App () {
   },[access, navigate])
 
   function onSearch(character) {
-    fetch (`http://localhost:3001/rickandmorty/character/${character}`)
-       .then((response) => response.json())
-       .then((data) => {
-          if (data.name) {
-             const alreadyExists = characters.some(char => char.id === data.id);
-             if (!alreadyExists) {
-                setCharacters((oldChars) => [...oldChars, data]);
-             } else {
-                window.alert(`El personaje ${data.name} ya ha sido agregado.`);
-             }
+    fetch(`http://localhost:3001/rickandmorty/character/${character}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data && data.id >= 1 && data.id <= 4) {
+          const alreadyExists = characters.some((char) => char.id === data.id);
+          if (!alreadyExists) {
+            setCharacters((oldChars) => [...oldChars, data]);
           } else {
-             window.alert('Ingrese un ID entre 1 y 826');
+            window.alert(`El personaje ${data.name} ya ha sido agregado.`);
           }
-       });
- }
-
+        } 
+      })
+      .catch((error) => {
+        console.error(error);
+        window.alert("Hubo un error al buscar el personaje.");
+      });
+  }
+ 
+ 
   function onClose(id){
     setCharacters(characters.filter(personaje => personaje.id !== id))
   }

@@ -18,7 +18,7 @@ export default function Cards(props) {
          origin={personaje.origin}
          key={personaje.id}
          id={personaje.id}
-      />)):(<h3 style={{color: "white", backgroundColor: "green"}}>No hay personajes.</h3>)}
+      />)):(<h3 style={{color: "white"}}>No hay personajes.</h3>)}
    </ContCartas>
    </div>);
    
