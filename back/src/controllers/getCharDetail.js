@@ -3,11 +3,12 @@ var getCharDetail = (res, ID) => {
     .then((response) => response.json())
     .then((data) => {
         let character = {
+            id: data.id,
             image: data.image,
             name: data.name,
             gender: data.gender,
             status: data.status,
-            origin: data.origin,
+            origin: data.origin.name,
             species: data.species
         };
         res

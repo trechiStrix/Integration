@@ -36,20 +36,17 @@ function App () {
   },[access, navigate])
 
   function onSearch(character) {
-    fetch(`http://localhost:3001/rickandmorty/character/${character}`)
+    fetch(`http://localhost:3001/rickandmorty/onsearch/${character}`)
       .then((response) => response.json())
       .then((data) => {
-        if (data && data.id >= 1 && data.id <= 4) {
           const alreadyExists = characters.some((char) => char.id === data.id);
           if (!alreadyExists) {
             setCharacters((oldChars) => [...oldChars, data]);
           } else {
             window.alert(`El personaje ${data.name} ya ha sido agregado.`);
           }
-        } 
-      })
+    })
       .catch((error) => {
-        console.error(error);
         window.alert("Hubo un error al buscar el personaje.");
       });
   }
